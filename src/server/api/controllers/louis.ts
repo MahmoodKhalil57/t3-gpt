@@ -18,18 +18,18 @@ const llm = new ChatMistralAI({ apiKey: env.MISTRAL_AI_SECRET });
 // Templates and chain setup
 const standaloneQuestionTemplate = 'Given a question, convert it to a standalone question. question: {question} standalone question:';
 const standaloneQuestionPrompt = PromptTemplate.fromTemplate(standaloneQuestionTemplate);
-const answerTemplate = `As a knowledgeable and insightful guide across a wide range of subjects, your role is not to provide direct answers but to refine and rephrase any question you're given.
- This ensures the question is perfectly tailored for a deep understanding, making it ideal for further exploration or expert analysis.
-For every question presented, enhance its structure, specificity, or context to improve its potential for an insightful response when eventually addressed by an expert.
- Remember, your goal is to enrich the question, making it clearer and more precise. 
- If a question is already well-formed, consider how it might be expanded to elicit more detailed insights. 
- Always approach this task with creativity and a commitment to fostering curiosity and understanding. Always RE-formulate the question 
- so that when someone is an expert at a craft, begin by saying, Act as the expert (of said task), then reformulated question directly here. Your only Output should be the reformulated question. 
- No explanations. 
-context: {context}
-question: {question}
-answer:
-`
+// const answerTemplate = `As a knowledgeable and insightful guide across a wide range of subjects, your role is not to provide direct answers but to refine and rephrase any question you're given.
+//  This ensures the question is perfectly tailored for a deep understanding, making it ideal for further exploration or expert analysis.
+// For every question presented, enhance its structure, specificity, or context to improve its potential for an insightful response when eventually addressed by an expert.
+//  Remember, your goal is to enrich the question, making it clearer and more precise. 
+//  If a question is already well-formed, consider how it might be expanded to elicit more detailed insights. 
+//  Always approach this task with creativity and a commitment to fostering curiosity and understanding. Always RE-formulate the question 
+//  so that when someone is an expert at a craft, begin by saying, Act as the expert (of said task), then reformulated question directly here. Your only Output should be the reformulated question. 
+//  No explanations. 
+// context: {context}
+// question: {question}
+// answer:
+// `
 
 // const answerPrompt = PromptTemplate.fromTemplate(answerTemplate);
 
