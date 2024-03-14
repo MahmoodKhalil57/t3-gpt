@@ -1,5 +1,4 @@
 import React from "react";
-import { IoMdClose } from "react-icons/io";
 import Sidebar from "./Sidebar";
 import type { Signal } from "@preact/signals-react";
 
@@ -39,7 +38,7 @@ const MobileSiderbar = (props: { mobileSidebarVisible: Signal<boolean> }) => {
                     }}
                   >
                     <span className="sr-only">Close sidebar</span>
-                    <IoMdClose className="h-6 w-6 text-white" />
+                    <div className="i-ion-md-close h-6 w-6 text-white" ></div>
                   </button>
                 </div>
                 <Sidebar />

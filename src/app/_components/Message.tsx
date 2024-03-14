@@ -1,6 +1,3 @@
-import { SiOpenai } from "react-icons/si";
-import { HiUser } from "react-icons/hi";
-import { TbCursorText } from "react-icons/tb";
 
 const Message = (props: {
   message: {
@@ -23,9 +20,9 @@ const Message = (props: {
           <div className="w-8 flex flex-col relative items-end">
             <div className="relative h-7 w-7 p-1 rounded-sm text-white flex items-center justify-center bg-black/75 text-opacity-100r">
               {isUser ? (
-                <HiUser className="h-4 w-4 text-white" />
+                <div className="i-heroicons-user h-4 w-4 text-white" ></div>
               ) : (
-                <SiOpenai className="h-4 w-4 text-white" />
+                <div className="i-simple-icons-openai h-4 w-4 text-white"></div>
               )}
             </div>
             <div className="text-xs flex items-center justify-center gap-1 absolute left-0 top-2 -ml-4 -translate-x-full group-hover:visible !invisible">
@@ -45,7 +42,7 @@ const Message = (props: {
               <div className="min-h-20 flex flex-col items-start gap-4 whitespace-pre-wrap break-words">
                 <div className="markdown prose w-full break-words dark:prose-invert dark">
                   {!isUser && text === null ? (
-                    <TbCursorText className="h-6 w-6 animate-pulse" />
+                    <div className="i-tabler-cursor-text h-6 w-6 animate-pulse" ></div>
                   ) : (
                     <p>{text}</p>
                   )}

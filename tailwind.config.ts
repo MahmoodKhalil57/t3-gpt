@@ -10,5 +10,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-icones-plugin'),
+  ],
 } satisfies Config;

@@ -1,9 +1,6 @@
 import { createRef, type KeyboardEvent, type MouseEvent } from "react";
-import { FiSend } from "react-icons/fi";
-import { BsChevronDown, BsPlusLg } from "react-icons/bs";
-import { RxHamburgerMenu } from "react-icons/rx";
 import Message from "./Message";
-import { DEFAULT_OPENAI_MODEL } from "~/shared/Constants";
+import { Category, DEFAULT_OPENAI_MODEL } from "~/shared/Constants";
 import { type Signal, computed, signal, effect } from "@preact/signals-react";
 import { client } from "~/trpc/react";
 
@@ -63,7 +60,7 @@ const conversationContainer = computed(() => !showEmptyChat.value && !conversati
           </span>
         </span>
         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-          <BsChevronDown className="h-4 w-4 text-gray-400" />
+          <div className="i-bi-chevron-down h-4 w-4 text-gray-400"></div>
         </span>
       </button>
     </div>
@@ -78,13 +75,14 @@ const sendMessageButton = computed(() => <button
   onClick={sendMessage}
   className="absolute p-1 rounded-md bottom-1.5 md:bottom-2.5 bg-transparent disabled:bg-gray-500 right-1 md:right-2 disabled:opacity-40"
 >
-  <FiSend className="h-4 w-4 mr-1 text-white " />
+  <div className="i-material-symbols-send-rounded h-4 w-4 mr-1 text-white"></div>
 </button>)
 
 const selectedModel = DEFAULT_OPENAI_MODEL;
 
 const sendMessage = async (e: KeyboardEvent<HTMLTextAreaElement> | MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
   e.preventDefault();
+  const selectedCategory = Category.Code;
 
   // Don't send empty messages
   if (messageEmpty.value) {
@@ -111,13 +109,17 @@ const sendMessage = async (e: KeyboardEvent<HTMLTextAreaElement> | MouseEvent<HT
     const response = await client.openai.sendMessage.mutate({
       messages: conversation.value,
       model: selectedModel,
+      selectedCategory,
     })
 
-    // Add the message to the conversation
-    conversation.value = [
-      ...conversation.value,
-      { content: response?.message ?? '', role: "system" },
-    ]
+    if (response?.message) {
+      // Add the message to the conversation
+      conversation.value = [
+        ...conversation.value,
+        { content: response?.message ?? '', role: "system" },
+      ]
+    }
+
 
     isLoading.value = false
   } catch (error) {
@@ -191,11 +193,11 @@ const Chat = (props: { mobileSidebarVisible: Signal<boolean> }) => {
           onClick={() => { mobileSidebarVisible.value = !mobileSidebarVisible.value }}
         >
           <span className="sr-only">Open sidebar</span>
-          <RxHamburgerMenu className="h-6 w-6 text-white" />
+          <div className="i-radix-icons-hamburger-menu h-6 w-6 text-white"></div>
         </button>
         <h1 className="flex-1 text-center text-base font-normal">New chat</h1>
         <button type="button" className="px-3">
-          <BsPlusLg className="h-6 w-6" />
+          <div className="i-bi-plus-lg h-6 w-6"></div>
         </button>
       </div>
       <div className="relative h-full w-full transition-width flex flex-col overflow-hidden items-stretch flex-1">

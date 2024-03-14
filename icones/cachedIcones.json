@@ -1,0 +1,66 @@
+[
+  {
+    "iconeName": "fe:search",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "bi:chevron-down",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "bi:plus-lg",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "radix-icons:hamburger-menu",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "simple-icons:openai",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "heroicons:user",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "tabler:cursor-text",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "ion:md-close",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "ant-design:message-outlined",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "ant-design:plus-outlined",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "ant-design:user-outlined",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "ant-design:setting-outlined",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "bx:link-external",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "lucide:message-square",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "mdi:logout",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "material-symbols:send-rounded",
+    "iconeColored": false
+  }
+]
