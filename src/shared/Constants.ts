@@ -18,3 +18,15 @@ export const OPENAI_MODELS: OpenAIModel[] = [
   DEFAULT_OPENAI_MODEL,
   GPT4_OPENAI_MODEL,
 ];
+
+export enum Category {
+  Marketing,
+  Image,
+  Code,
+  Math,
+  Science,
+  History,
+  Writer,
+  Contextual,
+  Other
+}

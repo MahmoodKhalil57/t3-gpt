@@ -1,6 +1,6 @@
 import { createRef, type KeyboardEvent, type MouseEvent } from "react";
 import Message from "./Message";
-import { DEFAULT_OPENAI_MODEL } from "~/shared/Constants";
+import { Category, DEFAULT_OPENAI_MODEL } from "~/shared/Constants";
 import { type Signal, computed, signal, effect } from "@preact/signals-react";
 import { client } from "~/trpc/react";
 
@@ -82,6 +82,7 @@ const selectedModel = DEFAULT_OPENAI_MODEL;
 
 const sendMessage = async (e: KeyboardEvent<HTMLTextAreaElement> | MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
   e.preventDefault();
+  const selectedCategory = Category.Code;
 
   // Don't send empty messages
   if (messageEmpty.value) {
@@ -108,13 +109,17 @@ const sendMessage = async (e: KeyboardEvent<HTMLTextAreaElement> | MouseEvent<HT
     const response = await client.openai.sendMessage.mutate({
       messages: conversation.value,
       model: selectedModel,
+      selectedCategory,
     })
 
-    // Add the message to the conversation
-    conversation.value = [
-      ...conversation.value,
-      { content: response?.message ?? '', role: "system" },
-    ]
+    if (response?.message) {
+      // Add the message to the conversation
+      conversation.value = [
+        ...conversation.value,
+        { content: response?.message ?? '', role: "system" },
+      ]
+    }
+
 
     isLoading.value = false
   } catch (error) {
