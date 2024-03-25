@@ -42,7 +42,7 @@ export const StripeController = {
   },
 
   handleWebhook: async (reqBody: Buffer, sig: string | string[]) => {
-    let event;
+    let event: Stripe.Event;
 
     try {
       event = stripe.webhooks.constructEvent(reqBody, sig, process.env.STRIPE_WEBHOOK_SECRET!);
